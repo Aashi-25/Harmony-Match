@@ -51,18 +51,18 @@ export const InfiniteMovingCards = ({
         {items.map((item) => (
           <li
             key={item.name}
-            className="relative w-[450px] max-w-full shrink-0 rounded-3xl border-2 border-pink-400/30 bg-gradient-to-br from-black/60 to-purple-900/40 backdrop-blur-md px-10 py-10 md:w-[550px] shadow-2xl hover:border-pink-400/50 transition-all duration-300"
+            className="relative w-[450px] max-w-full shrink-0 rounded-3xl border-2 border-indigo-400/30 bg-gradient-to-br from-slate-800/60 to-indigo-900/40 backdrop-blur-md px-10 py-10 md:w-[550px] shadow-2xl hover:border-indigo-400/50 transition-all duration-300"
           >
             <blockquote>
-              <span className="relative z-20 text-lg leading-[1.8] font-medium text-pink-100 drop-shadow-md">
+              <span className="relative z-20 text-lg leading-[1.8] font-medium text-indigo-100 drop-shadow-md">
                 {item.quote}
               </span>
               <div className="relative z-20 mt-8 flex flex-row items-center">
                 <span className="flex flex-col gap-2">
-                  <span className="text-xl font-bold text-pink-300 drop-shadow-lg">
+                  <span className="text-xl font-bold text-indigo-300 drop-shadow-lg">
                     {item.name}
                   </span>
-                  <span className="text-base text-pink-200/80 font-medium">
+                  <span className="text-base text-indigo-200/80 font-medium">
                     {item.title}
                   </span>
                 </span>

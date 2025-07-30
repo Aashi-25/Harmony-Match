@@ -27,7 +27,7 @@ const techHighlights = [
 ];
 
 const TechnicalArchitecture = () => (
-  <section className="py-28 bg-gradient-to-r from-purple-900/60 via-pink-900/50 to-purple-800/60 backdrop-blur-lg flex flex-col items-center justify-center relative overflow-hidden border-y border-pink-400/20">
+  <section className="py-28 bg-gradient-to-br from-slate-900/80 via-indigo-900/60 to-purple-800/70 backdrop-blur-lg flex flex-col items-center justify-center relative overflow-hidden border-y border-indigo-400/20">
     <h2 className="text-5xl font-bold text-center text-white mb-16 drop-shadow-lg dark:text-gray-100">
       The Intelligence Behind HarmonyMatch
     </h2>
