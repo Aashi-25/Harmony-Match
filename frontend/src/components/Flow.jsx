@@ -52,7 +52,7 @@ export default function Flow() {
   }));
 
   return (
-    <div className="relative w-full overflow-clip pb-20">
+    <div className="relative w-full overflow-clip ">
       <Timeline data={data} />
     </div>
   );

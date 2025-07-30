@@ -1,7 +1,5 @@
-"use client";
-
 import React from "react";
-import { InfiniteMovingCards } from "./ui/infinite-moving-cards"; // Your folder structure uses relative import
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 const techHighlights = [
   {
@@ -27,9 +25,19 @@ const techHighlights = [
 ];
 
 const TechnicalArchitecture = () => (
-  <section className="py-28 bg-gradient-to-br from-slate-900/80 via-indigo-900/60 to-purple-800/70 backdrop-blur-lg flex flex-col items-center justify-center relative overflow-hidden border-y border-indigo-400/20">
-    <h2 className="text-5xl font-bold text-center text-white mb-16 drop-shadow-lg dark:text-gray-100">
+  <section
+    className="py-28 bg-gradient-to-br from-slate-900/90 via-purple-900/70 to-purple-900/60 backdrop-blur-lg flex flex-col items-center justify-center relative overflow-hidden border-y border-purple-400/20"
+    style={{
+      backgroundImage: `radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0)`,
+      backgroundSize: "60px 60px",
+    }}
+  >
+    <h2 className="text-5xl font-bold text-center text-white mb-16 drop-shadow-xl dark:text-gray-100 relative">
       The Intelligence Behind HarmonyMatch
+      <span
+        className="absolute inset-0 -z-10 bg-purple-400/10 rounded-full blur-2xl"
+        style={{ animation: "pulseGlow 6s ease-in-out infinite" }}
+      ></span>
     </h2>
     <InfiniteMovingCards
       items={techHighlights}
@@ -38,6 +46,29 @@ const TechnicalArchitecture = () => (
       pauseOnHover={true}
       className="max-w-7xl"
     />
+    <style jsx>{`
+      @keyframes pulseGlow {
+        0%, 100% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(1.05);
+        }
+      }
+      .infinite-moving-card {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+        backdrop-filter: blur(4px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .infinite-moving-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(139, 92, 246, 0.25);
+      }
+    `}</style>
   </section>
 );
 
