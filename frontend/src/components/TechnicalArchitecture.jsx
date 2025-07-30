@@ -1,59 +1,44 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.8 },
-  }),
-};
+import React from "react";
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards"; // Your folder structure uses relative import
 
 const techHighlights = [
   {
-    title: 'Omnidim.io Voice AI',
-    desc: 'Conversational, sentiment-aware, and multilingual. Adapts questions based on your responses.',
-    icon: '🗣️',
+    quote: "Conversational, sentiment-aware, and multilingual. Adapts questions based on your responses.",
+    name: "Omnidim.io Voice AI",
+    title: "Voice Interaction",
   },
   {
-    title: 'Matching Engine',
-    desc: 'Python, Pandas, and Scikit-learn power a robust, explainable compatibility algorithm.',
-    icon: '🔬',
+    quote: "Python, Pandas, and Scikit-learn power a robust, explainable compatibility algorithm.",
+    name: "Matching Engine",
+    title: "Compatibility Algorithm",
   },
   {
-    title: 'Firebase Firestore',
-    desc: 'Scalable, secure, and real-time database for user profiles and room assignments.',
-    icon: '☁️',
+    quote: "Scalable, secure, and real-time database for user profiles and room assignments.",
+    name: "Firebase Firestore",
+    title: "Database",
   },
   {
-    title: 'IBM AI Fairness 360',
-    desc: 'Ensures ethical, unbiased, and transparent matching for all users.',
-    icon: '⚖️',
+    quote: "Ensures ethical, unbiased, and transparent matching for all users.",
+    name: "IBM AI Fairness 360",
+    title: "Fairness Framework",
   },
 ];
 
 const TechnicalArchitecture = () => (
-  <section className="py-20 bg-black/40 backdrop-blur-sm">
-    <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">Technical Architecture</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
-      {techHighlights.map((tech, i) => (
-        <motion.div
-          key={tech.title}
-          custom={i}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="bg-black/50 backdrop-blur-md rounded-2xl shadow p-8 flex flex-col items-center text-center border border-pink-400/20"
-        >
-          <div className="text-4xl mb-4">{tech.icon}</div>
-          <h3 className="text-lg font-bold text-pink-400 mb-2">{tech.title}</h3>
-          <p className="text-pink-100 text-sm">{tech.desc}</p>
-        </motion.div>
-      ))}
-    </div>
+  <section className="py-28 bg-gradient-to-r from-purple-900/60 via-pink-900/50 to-purple-800/60 backdrop-blur-lg flex flex-col items-center justify-center relative overflow-hidden border-y border-pink-400/20">
+    <h2 className="text-5xl font-bold text-center text-white mb-16 drop-shadow-lg dark:text-gray-100">
+      The Intelligence Behind HarmonyMatch
+    </h2>
+    <InfiniteMovingCards
+      items={techHighlights}
+      direction="right"
+      speed="slow"
+      pauseOnHover={true}
+      className="max-w-7xl"
+    />
   </section>
 );
 
-export default TechnicalArchitecture; 
+export default TechnicalArchitecture;
