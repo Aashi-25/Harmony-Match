@@ -44,8 +44,8 @@ const features = [
 ];
 
 const Features = () => (
-  <section id="features" className="py-20 bg-white/80">
-    <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Key Features</h2>
+  <section id="features" className="py-20 bg-black/30 backdrop-blur-sm">
+    <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">Key Features</h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
       {features.map((feature, i) => (
         <motion.div
@@ -55,11 +55,11 @@ const Features = () => (
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-pink-100 hover:shadow-2xl transition"
+          className="bg-black/40 backdrop-blur-md rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-pink-400/20 hover:shadow-2xl hover:border-pink-400/40 transition"
         >
           <div className="text-5xl mb-4">{feature.icon}</div>
-          <h3 className="text-xl font-bold text-pink-600 mb-2">{feature.title}</h3>
-          <p className="text-gray-700">{feature.desc}</p>
+          <h3 className="text-xl font-bold text-pink-400 mb-2">{feature.title}</h3>
+          <p className="text-pink-100">{feature.desc}</p>
         </motion.div>
       ))}
     </div>

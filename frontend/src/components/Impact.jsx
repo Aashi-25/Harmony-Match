@@ -20,10 +20,10 @@ const impactPoints = [
 ];
 
 const Impact = () => (
-  <section id="impact" className="py-20 bg-gradient-to-r from-pink-100 to-purple-100">
-    <h2 className="text-4xl font-bold text-center text-gray-900 mb-10">From Hack to Impact</h2>
+  <section id="impact" className="py-20 bg-black/20 backdrop-blur-sm">
+    <h2 className="text-4xl font-bold text-center text-white mb-10 drop-shadow-lg">From Hack to Impact</h2>
     <div className="max-w-3xl mx-auto text-center mb-10">
-      <p className="text-xl text-gray-700">
+      <p className="text-xl text-pink-100 drop-shadow-md">
         Our mission: Empower women across India to find safe, compatible, and comforting living spaces. HarmonyMatch is more than a matcher—it's a movement.
       </p>
     </div>
@@ -36,9 +36,9 @@ const Impact = () => (
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex items-center gap-4 text-lg text-gray-800"
+          className="flex items-center gap-4 text-lg text-pink-100"
         >
-          <span className="text-pink-600 text-2xl">•</span> {point}
+          <span className="text-pink-400 text-2xl">•</span> {point}
         </motion.li>
       ))}
     </ul>

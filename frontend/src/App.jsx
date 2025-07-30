@@ -13,23 +13,30 @@ import {
   TechnicalArchitecture,
   Impact,
   CTA,
-  Footer
+  Footer,
+  ProtectiveShieldBackground
 } from './components'
 
 function App() {
 
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-purple-100 min-h-screen w-full">
-      {/* <HarmonyMatchHomepage/> */}
-      {/* <Home2/> */}
-      <NavBar />
-      <Hero />
-      <Features />
-      <Flow />
-      <TechnicalArchitecture />
-      <Impact />
-      <CTA />
-      <Footer />
+    <div className="relative min-h-screen w-full">
+      {/* Background Layer */}
+      <div className="fixed inset-0 z-0">
+        <ProtectiveShieldBackground />
+      </div>
+      
+      {/* Content Layer */}
+      <div className="relative z-10">
+        <NavBar />
+        <Hero />
+        <Features />
+        <Flow />
+        <TechnicalArchitecture />
+        <Impact />
+        <CTA />
+        <Footer />
+      </div>
     </div>
   )
 }

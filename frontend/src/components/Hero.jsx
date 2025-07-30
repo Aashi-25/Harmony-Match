@@ -14,11 +14,11 @@ const Hero = () => (
       animate="visible"
       className="max-w-3xl mx-auto"
     >
-      <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+      <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
         Find Your Perfect Roommate.<br/>
-        <span className="text-pink-600">Safe. Compatible. Empowering.</span>
+        <span className="text-pink-400">Safe. Compatible. Empowering.</span>
       </h1>
-      <p className="text-xl text-gray-700 mb-8">
+      <p className="text-xl text-pink-100 mb-8 drop-shadow-md">
         HarmonyMatch is India's first AI-powered roommate and room matching platform for women—voice-first, bias-free, and built for trust.
       </p>
       <motion.a

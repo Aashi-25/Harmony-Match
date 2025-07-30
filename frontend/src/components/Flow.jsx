@@ -29,8 +29,8 @@ const flowSteps = [
 ];
 
 const Flow = () => (
-  <section id="flow" className="py-20 bg-gradient-to-r from-pink-100 to-purple-100">
-    <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">How HarmonyMatch Works</h2>
+  <section id="flow" className="py-20 bg-black/20 backdrop-blur-sm">
+    <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">How HarmonyMatch Works</h2>
     <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 max-w-5xl mx-auto">
       {flowSteps.map((step, i) => (
         <motion.div
@@ -40,11 +40,11 @@ const Flow = () => (
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex-1 bg-white rounded-2xl shadow-lg p-8 text-center border-t-4 border-pink-400"
+          className="flex-1 bg-black/40 backdrop-blur-md rounded-2xl shadow-lg p-8 text-center border-t-4 border-pink-400"
         >
           <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-pink-600 text-white flex items-center justify-center text-2xl font-bold">{step.step}</div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-          <p className="text-gray-700">{step.desc}</p>
+          <h3 className="text-xl font-semibold text-white mb-2">{step.title}</h3>
+          <p className="text-pink-100">{step.desc}</p>
         </motion.div>
       ))}
     </div>

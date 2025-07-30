@@ -34,8 +34,8 @@ const techHighlights = [
 ];
 
 const TechnicalArchitecture = () => (
-  <section className="py-20 bg-white/90">
-    <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Technical Architecture</h2>
+  <section className="py-20 bg-black/40 backdrop-blur-sm">
+    <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">Technical Architecture</h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
       {techHighlights.map((tech, i) => (
         <motion.div
@@ -45,11 +45,11 @@ const TechnicalArchitecture = () => (
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl shadow p-8 flex flex-col items-center text-center border border-pink-100"
+          className="bg-black/50 backdrop-blur-md rounded-2xl shadow p-8 flex flex-col items-center text-center border border-pink-400/20"
         >
           <div className="text-4xl mb-4">{tech.icon}</div>
-          <h3 className="text-lg font-bold text-pink-600 mb-2">{tech.title}</h3>
-          <p className="text-gray-700 text-sm">{tech.desc}</p>
+          <h3 className="text-lg font-bold text-pink-400 mb-2">{tech.title}</h3>
+          <p className="text-pink-100 text-sm">{tech.desc}</p>
         </motion.div>
       ))}
     </div>
