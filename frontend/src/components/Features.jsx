@@ -1,69 +1,160 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.8 },
-  }),
+// To change images in the Features section:
+// Edit the 'features' array in App.jsx. Each object has a 'src' property. Replace the URL with your desired image.
+// Example:
+// {
+//   title: 'Feature Title',
+//   desc: 'Feature description',
+//   icon: '🎤',
+//   src: 'https://your-image-url.com/image.jpg',
+// }
+
+const Features = ({ features, autoplay = false, bgClass = "bg-black/40 backdrop-blur-lg" }) => {
+  const [active, setActive] = useState(0);
+
+  const handleNext = () => {
+    setActive((prev) => (prev + 1) % features.length);
+  };
+
+  const handlePrev = () => {
+    setActive((prev) => (prev - 1 + features.length) % features.length);
+  };
+
+  const isActive = (index) => index === active;
+
+  useEffect(() => {
+    if (autoplay) {
+      const interval = setInterval(handleNext, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [autoplay]);
+
+  const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
+
+  return (
+    <section
+      id="features"
+      className={`relative py-28 md:py-36 w-full overflow-x-hidden ${bgClass}`}
+    >
+      <div className="mx-auto max-w-5xl px-2 md:px-8 lg:px-12">
+        <h2 className="text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500 mb-20 drop-shadow-[0_2px_8px_rgba(236,72,153,0.7)]">
+          Designed for Women, by Women, with Intelligence
+        </h2>
+        <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2 items-center md:gap-x-32 md:gap-y-20">
+          <div>
+            <div className="relative h-[420px] w-full md:h-[520px] lg:h-[600px] xl:h-[700px]">
+              <AnimatePresence>
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={feature.src}
+                    initial={{
+                      opacity: 0,
+                      scale: 0.9,
+                      z: -100,
+                      rotate: randomRotateY(),
+                    }}
+                    animate={{
+                      opacity: isActive(index) ? 1 : 0.7,
+                      scale: isActive(index) ? 1 : 0.95,
+                      z: isActive(index) ? 0 : -100,
+                      rotate: isActive(index) ? 0 : randomRotateY(),
+                      zIndex: isActive(index) ? 40 : features.length + 2 - index,
+                      y: isActive(index) ? [0, -80, 0] : 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.9,
+                      z: 100,
+                      rotate: randomRotateY(),
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-0 origin-bottom"
+                    style={{ pointerEvents: isActive(index) ? 'auto' : 'none' }}
+                  >
+                    <img
+                      src={feature.src}
+                      alt={feature.title}
+                      width={800}
+                      height={800}
+                      draggable={false}
+                      className="h-full w-full rounded-3xl object-cover object-center border-2 border-pink-400/40 shadow-2xl"
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          </div>
+          <div className="flex flex-col justify-between py-4">
+            <motion.div
+              key={active}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              <div className="text-7xl mb-6 animate-pulse">{features[active].icon}</div>
+              <h3 className="text-4xl font-bold text-pink-300 mb-6 drop-shadow-lg">{features[active].title}</h3>
+              <motion.p className="mt-8 text-2xl text-pink-100 drop-shadow-md">
+                {features[active].desc.split(" ").map((word, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+                    animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut", delay: 0.02 * index }}
+                    className="inline-block"
+                  >
+                    {word}&nbsp;
+                  </motion.span>
+                ))}
+              </motion.p>
+            </motion.div>
+            <div className="flex gap-4 pt-20 mt-5 md:pt-0">
+              <button
+                onClick={handlePrev}
+                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/90 hover:bg-slate-700/90"
+              >
+                <IconArrowLeft className="h-7 w-7 text-pink-400 transition-transform duration-300 group-hover/button:rotate-12" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/90 hover:bg-slate-700/90"
+              >
+                <IconArrowRight className="h-7 w-7 text-pink-400 transition-transform duration-300 group-hover/button:-rotate-12" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent"
+          style={{ animation: "scanLine 6s linear infinite" }}
+        ></div>
+      </div>
+      <style jsx>{`
+        @keyframes scanLine {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          90% {
+            opacity: 0.6;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </section>
+  );
 };
 
-const features = [
-  {
-    title: 'Voice-Driven Smart Survey',
-    desc: 'Conversational 5-question micro-survey powered by Omnidim.io. Adapts to your tone and responses for a personalized experience.',
-    icon: '🎤',
-  },
-  {
-    title: 'AI-Based Roommate Matching',
-    desc: 'Scientifically-backed compatibility algorithm matches you with the best roommates. Transparent, explainable results.',
-    icon: '🤖',
-  },
-  {
-    title: 'Automatic Room Allocation',
-    desc: 'Get matched not just to a roommate, but to the most suitable available room based on your preferences.',
-    icon: '🏠',
-  },
-  {
-    title: 'User Dashboard',
-    desc: 'See your top 3 roommate+room matches, accept or request re-matching, and track your application status.',
-    icon: '📊',
-  },
-  {
-    title: 'Admin Dashboard',
-    desc: 'Property managers can monitor, override, and optimize room assignments in real-time.',
-    icon: '🛠️',
-  },
-  {
-    title: 'Ethical, Fair & Private',
-    desc: 'No bias. Data is secure and matching is explainable. Built with IBM AI Fairness 360.',
-    icon: '🛡️',
-  },
-];
-
-const Features = () => (
-  <section id="features" className="py-20 bg-black/30 backdrop-blur-sm">
-    <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">Key Features</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      {features.map((feature, i) => (
-        <motion.div
-          key={feature.title}
-          custom={i}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="bg-black/40 backdrop-blur-md rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-pink-400/20 hover:shadow-2xl hover:border-pink-400/40 transition"
-        >
-          <div className="text-5xl mb-4">{feature.icon}</div>
-          <h3 className="text-xl font-bold text-pink-400 mb-2">{feature.title}</h3>
-          <p className="text-pink-100">{feature.desc}</p>
-        </motion.div>
-      ))}
-    </div>
-  </section>
-);
-
-export default Features; 
+export default Features;
