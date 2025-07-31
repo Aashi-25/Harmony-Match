@@ -4,6 +4,8 @@ import Landing from "./Landing.jsx";
 import Login from './Login.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminDashboard from './AdminDashboard.jsx';
+import UserDashboard from './UserDashboard.jsx';
 
 
 function App(){
@@ -13,6 +15,8 @@ function App(){
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/user/dashboard" element={<UserDashboard />} />
         </Routes>
       </Router>
       <ToastContainer />
