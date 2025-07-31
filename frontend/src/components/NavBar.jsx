@@ -14,7 +14,7 @@ const NavBar = () => (
         <a href="#features" className="text-pink-100 hover:text-pink-300 font-medium transition">Features</a>
         <a href="#flow" className="text-pink-100 hover:text-pink-300 font-medium transition">How it Works</a>
         <a href="#impact" className="text-pink-100 hover:text-pink-300 font-medium transition">Impact</a>
-        <a href="#cta" className="bg-pink-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-pink-700 transition shadow-lg">Get Started</a>
+        <a href="/login" className="bg-pink-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-pink-700 transition shadow-lg">Get Started</a>
       </div>
     </div>
   </motion.nav>
