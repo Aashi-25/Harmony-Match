@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Shield, CheckCircle, AlertCircle, MapPin, Edit, Camera } from 'lucide-react';
 import { ProtectiveShieldBackground } from './components';
 
 
 const UserDashboard = () => {
+  // Inject OmniDim web widget script on mount
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.id = 'omnidimension-web-widget';
+    script.async = true;
+    script.src = 'https://backend.omnidim.io/web_widget.js?secret_key=966db3fa32aad479ffe01cb14a4cf81b';
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   const matches = [
     { id: 1, name: 'Priya S.', score: 92, room: 'Room 102, Sunny Side', verified: true },
     { id: 2, name: 'Ananya R.', score: 85, room: 'Room 305, Quiet Corner', verified: false },
