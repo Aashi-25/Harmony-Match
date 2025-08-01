@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import {
   NavBar,
   Hero,
@@ -49,7 +50,19 @@ const features = [
   },
 ];
 
+
 function Landing() {
+  // Inject OmniDim web widget script on mount
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.id = 'omnidimension-web-widget';
+    script.async = true;
+    script.src = 'https://backend.omnidim.io/web_widget.js?secret_key=ea974810a5695d85f87876815637ef8e';
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full">
