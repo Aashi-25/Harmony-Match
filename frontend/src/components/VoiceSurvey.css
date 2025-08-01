@@ -1,0 +1,6 @@
+@import url('/src/index.css');
+
+     /* Custom styles for VoiceSurvey if needed */
+     .voice-survey-container {
+       @apply min-h-screen flex items-center justify-center bg-gray-50;
+     }
