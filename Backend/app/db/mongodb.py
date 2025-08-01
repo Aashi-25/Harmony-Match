@@ -12,3 +12,10 @@ if parsed.path and len(parsed.path) > 1:
 else:
     db_name = "harmony_match"
 db = client[db_name]
+
+async def get_db():
+    try:
+        yield client
+    finally:
+        # Motor handles connection pooling automatically, no explicit close needed
+        pass
