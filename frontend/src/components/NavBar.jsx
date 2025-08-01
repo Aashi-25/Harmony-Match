@@ -9,7 +9,16 @@ const NavBar = () => (
     className="fixed top-0 left-0 w-full bg-black/20 backdrop-blur-xl shadow-lg z-20 border-b border-pink-400/20"
   >
     <div className="flex justify-between items-center px-8 py-4">
-      <span className="text-2xl font-extrabold text-pink-400 tracking-tight drop-shadow-lg">AI-Powered Roommate Matching</span>
+     <div className="flex items-center">
+               <div className="flex items-center space-x-3 flex-shrink-0">
+  <img
+    src="/src/assets/logo.png"
+    alt="Logo"
+    className="h-10 w-auto"
+  />
+  <span className="text-2xl font-extrabold text-pink-400 tracking-tight drop-shadow-lg">HarmonyMatch</span>
+</div>
+              </div>
       <div className="space-x-6">
         <a href="#features" className="text-pink-100 hover:text-pink-300 font-medium transition">Features</a>
         <a href="#flow" className="text-pink-100 hover:text-pink-300 font-medium transition">How it Works</a>

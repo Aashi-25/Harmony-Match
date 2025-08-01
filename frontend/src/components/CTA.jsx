@@ -10,8 +10,9 @@ const CTA = () => (
       transition={{ duration: 0.8 }}
       className="max-w-2xl mx-auto"
     >
-      <h2 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Roommate?</h2>
-      <p className="text-lg mb-8">Join HarmonyMatch today and discover a safe, compatible living space tailored to you.</p>
+      <h2 className="text-4xl font-bold mb-4">Ready to Find Your Perfect Roommate?</h2>
+            <p className="text-lg mb-8 italic">"Find a roommate who won’t judge your 2AM cereal habits."</p>
+            <p className="text-lg mb-8">Join HarmonyMatch today and discover a safe, compatible living space tailored to you.</p>
       <a
         href="#"
         className="inline-block bg-white text-pink-600 px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition shadow-lg"

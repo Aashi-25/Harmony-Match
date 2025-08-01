@@ -164,9 +164,14 @@ const Login = () => {
   return (
     <div style={styles.container}>
       <div style={styles.leftPanel}>
-        <div style={styles.brandSection}>
-          <HomeSVG />
-          <h1 style={styles.brandTitle}>Harmony Match</h1>
+                 <div style={styles.brandSection}>
+           {/* <HomeSVG /> */}
+                         <img
+      src="/src/assets/logo.png"
+      alt="Logo"
+      style={{ width: '80px', height: '80px', display: 'block', margin: '0 auto 10px auto' }}
+    />
+           <h1 style={styles.brandTitle}>Harmony Match</h1>
           <p style={styles.brandSubtitle}>Find Your Perfect Female Roommate</p>
         </div>
         

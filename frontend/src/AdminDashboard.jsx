@@ -8,6 +8,7 @@ const AdminDashboard = () => {
     { id: 1, name: 'Aashi Goel', room: '102', matchScore: 92, verified: true, city: 'Bangalore' },
     { id: 2, name: 'Sangya Ojha', room: '305', matchScore: 85, verified: false, city: 'Delhi' },
     { id: 3, name: 'Kanishka Sharma', room: '201', matchScore: 78, verified: true, city: 'Bangalore' },
+    { id: 4, name: 'Disha', room: '519', matchScore: 89, verified: true, city: 'Nagpur' },
   ];
 
   return (

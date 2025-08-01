@@ -45,7 +45,7 @@ const Features = ({ features, autoplay = false, bgClass = "bg-black/40 backdrop-
         </h2>
         <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2 items-center md:gap-x-32 md:gap-y-20">
           <div>
-            <div className="relative h-[420px] w-full md:h-[520px] lg:h-[600px] xl:h-[700px]">
+            <div className="relative h-[300px] w-full md:h-[350px] lg:h-[400px] xl:h-[450px]">
               <AnimatePresence>
                 {features.map((feature, index) => (
                   <motion.div
