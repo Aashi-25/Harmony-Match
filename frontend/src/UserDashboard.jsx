@@ -1,15 +1,10 @@
-<<<<<<< Updated upstream
-import React, { useEffect } from 'react';
-import { Shield, CheckCircle, AlertCircle, MapPin, Edit, Camera } from 'lucide-react';
-=======
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Shield, CheckCircle, AlertCircle, MapPin, Edit, Camera, Bell, User } from 'lucide-react';
->>>>>>> Stashed changes
 import { ProtectiveShieldBackground } from './components';
 import { motion } from 'framer-motion';
 
 const UserDashboard = () => {
-<<<<<<< Updated upstream
   // Inject OmniDim web widget script on mount
   useEffect(() => {
     const script = document.createElement('script');
@@ -21,14 +16,12 @@ const UserDashboard = () => {
       document.body.removeChild(script);
     };
   }, []);
-=======
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [matchStatuses, setMatchStatuses] = useState({});
   
->>>>>>> Stashed changes
   const matches = [
     { id: 1, name: 'Priya S.', score: 92, room: 'Room 102, Sunny Side', verified: true },
     { id: 2, name: 'Ananya R.', score: 85, room: 'Room 305, Quiet Corner', verified: false },
