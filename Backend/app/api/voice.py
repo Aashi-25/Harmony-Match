@@ -77,19 +77,27 @@ async def get_adaptive_question(data: Dict, db: AsyncIOMotorClient = Depends(get
 
 @router.post("/submit")
 async def submit_survey(data: Dict, db: AsyncIOMotorClient = Depends(get_db)):
+    print("/submit endpoint called")
+    print("Received data:", data)
     responses = data.get("responses", {})
     # Concatenate all answers into a single conversation transcript
     conversation = "\n".join([
         f"Q{i}: {responses[str(i)]['question']} A: {responses[str(i)]['text']}"
         for i in range(len(responses)) if str(i) in responses
     ])
+    print("Built conversation transcript:\n", conversation)
     try:
         gemini_json = extract_roommate_traits(conversation)
+        print("Gemini JSON output:", gemini_json)
         import json
         profile_dict = json.loads(gemini_json)
+        print("Profile dict after JSON loads:", profile_dict)
         # Validate and parse with Pydantic model
         profile = Profile(**profile_dict)
+        print("Validated Profile:", profile.dict())
         await db.harmony_match.profiles.insert_one(profile.dict())
+        print("Profile inserted into MongoDB.")
         return {"status": "success", "profile": profile.dict()}
     except Exception as e:
+        print("Error in /submit endpoint:", e)
         raise HTTPException(status_code=500, detail=str(e))

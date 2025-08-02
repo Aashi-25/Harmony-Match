@@ -104,7 +104,7 @@ import React, { useState, useEffect } from 'react';
 
        const submitSurvey = async () => {
          try {
-           const response = await axios.post('http://localhost:8000/api/survey/submit', {
+           const response = await axios.post('http://localhost:8000/api/voice/submit', {
              responses,
            });
            console.log('Survey submitted:', response.data);
