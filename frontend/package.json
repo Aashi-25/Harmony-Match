@@ -11,13 +11,9 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.34.1",
-<<<<<<< Updated upstream
     "axios": "^1.11.0",
     "framer-motion": "^12.23.12",
-=======
     "clsx": "^2.1.1",
-    "framer-motion": "^12.23.11",
->>>>>>> Stashed changes
     "lucide-react": "^0.533.0",
     "motion": "^12.23.12",
     "react": "^19.1.0",

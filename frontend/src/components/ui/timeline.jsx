@@ -32,13 +32,13 @@ export const Timeline = ({ data }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-5 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-pink-100 max-w-4xl">
+        <h2 className="text-4xl md:text-6xl mb-4 text-pink-100 max-w-4xl">
           How HarmonyMatch Works
         </h2>
-        <p className="text-rose-100 text-sm md:text-base max-w-sm">
+        <p className="text-rose-100 text-2xl md:text-2xl max-w-3xl mb-8">
           Follow these simple steps to find your perfect roommate and living space.
         </p>
-      </div>
+      </div> 
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (

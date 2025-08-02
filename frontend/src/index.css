@@ -17,3 +17,81 @@
   animation: scroll var(--animation-duration, 40s) linear infinite;
   animation-direction: var(--animation-direction, forwards);
 }
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+.typing-animation {
+  animation: typing 4s steps(60, end), blink 0.75s step-end 5 forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 4px solid white;
+  max-width: 100%;
+}
+
+.typing-animation-second {
+  animation: typing 4s steps(60, end) 4s, blink 0.75s step-end 5 forwards 4s;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 4px solid white;
+  max-width: 100%;
+}
+
+/* Container for the typing effect */
+.typing-container {
+  position: relative;
+}
+
+/* First line typing - stays visible after completion */
+.typing-line-1 {
+  animation: typing 4s steps(60, end) forwards, blink 0.75s step-end 5 forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  border-right: 4px solid white;
+  max-width: 100%;
+  width: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Second line typing - starts after first line completes */
+.typing-line-2 {
+  animation: 
+    typing 4s steps(60, end) 4s forwards,
+    blink 0.75s step-end 5 forwards 4s,
+    fadeIn 0.1s ease-in 4s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  border-right: 4px solid white;
+  max-width: 100%;
+  width: 0;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
