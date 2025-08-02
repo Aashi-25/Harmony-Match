@@ -6,6 +6,8 @@ import os
 from dotenv import load_dotenv
 from omnidimension import Client, APIError
 from typing import Dict
+from app.core.gemini_utils import extract_roommate_traits
+from app.models.profile import Profile
 router = APIRouter()
 
 # Webhook endpoint for OmniDim
@@ -76,15 +78,18 @@ async def get_adaptive_question(data: Dict, db: AsyncIOMotorClient = Depends(get
 @router.post("/submit")
 async def submit_survey(data: Dict, db: AsyncIOMotorClient = Depends(get_db)):
     responses = data.get("responses", {})
-    structured_profile = {
-        "sleep_time": responses.get("0", {}).get("text", "Unknown"),
-        "cleanliness_level": responses.get("1", {}).get("text", "Unknown"),
-        "social_energy": responses.get("2", {}).get("text", "Unknown"),
-        "adaptive_1": responses.get("3", {}).get("text", ""),
-        "adaptive_2": responses.get("4", {}).get("text", ""),
-    }
+    # Concatenate all answers into a single conversation transcript
+    conversation = "\n".join([
+        f"Q{i}: {responses[str(i)]['question']} A: {responses[str(i)]['text']}"
+        for i in range(len(responses)) if str(i) in responses
+    ])
     try:
-        await db.harmony_match.profiles.insert_one(structured_profile)
-        return {"status": "success", "profile": structured_profile}
+        gemini_json = extract_roommate_traits(conversation)
+        import json
+        profile_dict = json.loads(gemini_json)
+        # Validate and parse with Pydantic model
+        profile = Profile(**profile_dict)
+        await db.harmony_match.profiles.insert_one(profile.dict())
+        return {"status": "success", "profile": profile.dict()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
