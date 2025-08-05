@@ -53,7 +53,14 @@ const Typewriter = ({
   }, [currentIndex, text, speed, isTyping, onComplete, loop, loopDelay]);
 
   return (
-    <span className={className}>
+    <span
+      className={
+        className +
+        (isTyping && currentIndex < text.length && !isLooping
+          ? ' border-r-4 border-white pr-3'
+          : ' pr-3')
+      }
+    >
       {displayText}
       {isTyping && currentIndex < text.length && !isLooping && (
         <span className="animate-pulse">|</span>

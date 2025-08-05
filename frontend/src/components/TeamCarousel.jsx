@@ -3,7 +3,7 @@ import "./TeamCarousel.css"; // CSS styles will go here
 
 const teamMembers = [
   { name: "Aashi Goel", role: "Team Leader", img: "src/assets/aashi.jpeg" },
-  { name: "Disha", role: "Team Memeber", img: "src/assets/disha.jpg" },
+  { name: "Disha", role: "Team Member", img: "src/assets/disha.jpg" },
   { name: "Kanishka Sharma", role: "Team Member", img: "src/assets/kanishka.jpeg" },
   { name: "Sangya Ojha", role: "Team Member", img: "src/assets/sangya.jpeg" },
   { img: "src/assets/Card1.jpg" },
